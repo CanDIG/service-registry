@@ -65,9 +65,8 @@ def list_services():
         service_as_dict = orm.dump(service)
         service_as_dict['url'] = url.url
 
-        external_services.append(asdict(ExternalService(**service_as_dict)))
+        external_services.append(ExternalService(**service_as_dict))
 
-    print(external_services, file=sys.stderr, flush=True)
     return [orm.dump(ext_svc) for ext_svc in external_services], 200
 
 

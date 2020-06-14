@@ -32,7 +32,7 @@ class Service:
     organization: Organization
     version: str
     contactUrl: str = ''
-    documentation: str = ''
+    documentationUrl: str = ''
     description: str = ''
     createdAt: str = ''
     updatedAt: str = ''
@@ -47,7 +47,7 @@ class ExternalService():
     version: str
     url: str
     contactUrl: str = ''
-    documentation: str = ''
+    documentationUrl: str = ''
     description: str = ''
     createdAt: str = ''
     updatedAt: str = ''
