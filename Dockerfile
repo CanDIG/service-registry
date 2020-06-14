@@ -11,6 +11,6 @@ EXPOSE 3000
 
 # Run the model service server
 # provide some explicit defaults if no arugments are given
-ENTRYPOINT [ "python_model_service", "--port", "3000"]
-CMD [ "--logfile", "model_service.log",\
-      "--database", "model_service.sqlite" ]
+ENTRYPOINT [ "service_registry", "--port", "3000"]
+CMD [ "--logfile", "service_registry.log",\
+      "--database", "service_registry.sqlite" ]
