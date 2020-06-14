@@ -1,17 +1,16 @@
 # Service Registry
 
-[![Build Status](https://travis-ci.org/CanDIG/serice_registry.svg?branch=master)](https://travis-ci.org/CanDIG/serice_registry)
-[![CodeFactor](https://www.codefactor.io/repository/github/CanDIG/serice_registry/badge)](https://www.codefactor.io/repository/github/CanDIG/serice_registry)
-[![PyUp](https://pyup.io/repos/github/CanDIG/serice_registry/shield.svg)](https://pyup.io/repos/github/CanDIG/serice_registry/)
-[![Quay.io](https://quay.io/repository/candig/serice_registry/status)](https://quay.io/repository/candig/serice_registry)
+[![Build Status](https://travis-ci.org/CanDIG/service_registry.svg?branch=master)](https://travis-ci.org/CanDIG/service_registry)
+[![CodeFactor](https://www.codefactor.io/repository/github/CanDIG/service_registry/badge)](https://www.codefactor.io/repository/github/CanDIG/service_registry)
+[![PyUp](https://pyup.io/repos/github/CanDIG/service_registry/shield.svg)](https://pyup.io/repos/github/CanDIG/service_registry/)
+[![Quay.io](https://quay.io/repository/candig/service_registry/status)](https://quay.io/repository/candig/service_registry)
 
 ## Stack
 
 - [Connexion](https://github.com/zalando/connexion) for implementing the API
 - [SQLAlchemy](http://sqlalchemy.org), using [Sqlite3](https://www.sqlite.org/index.html) for ORM
-- [Bravado-core](https://github.com/Yelp/bravado-core) for Python classes from the spec
 - [Dredd](https://dredd.readthedocs.io/en/latest/) and [Dredd-Hooks-Python](https://github.com/apiaryio/dredd-hooks-python) for testing
-- Python 3
+- Python 3.7+
 - Pytest, tox
 - Travis-CI
 
@@ -36,7 +35,7 @@ npm install -g dredd
 The server can be run with, for instance
 
 ```
-python3 -m serice_registry --database=test.db --logfile=test.log --loglevel=WARN
+python3 -m service_registry --database=test.db --logfile=test.log --loglevel=WARN
 ```
 
 For testing, the dredd config is currently set up to launch the service itself, so no server needs be running:
