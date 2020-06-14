@@ -67,7 +67,7 @@ def list_services():
 
         external_services.append(ExternalService(**service_as_dict))
 
-    return [orm.dump(ext_svc) for ext_svc in external_services], 200
+    return [orm.dump(ext_svc) for ext_svc in external_services], 200, {'Access-Control-Allow-Origin':'*'}
 
 
 @apilog
@@ -95,7 +95,7 @@ def get_one_service(service_id):
     service_as_dict = orm.dump(service)
     service_as_dict['url'] = q.url
     external_service = ExternalService(**service_as_dict)
-    return orm.dump(external_service), 200
+    return orm.dump(external_service), 200, {'Access-Control-Allow-Origin':'*'}
 
 
 @apilog
@@ -103,7 +103,7 @@ def get_this_service():
     """
     Return info for this service
     """
-    return orm.dump(THIS_SERVICE), 200
+    return orm.dump(THIS_SERVICE), 200, {'Access-Control-Allow-Origin':'*'}
 
 
 @apilog
@@ -124,4 +124,4 @@ def list_service_types():
             continue
         service_types.add(service.type)
 
-    return [orm.dump(asdict(svc_type)) for svc_type in service_types], 200
+    return [orm.dump(asdict(svc_type)) for svc_type in service_types], 200, {'Access-Control-Allow-Origin':'*'}
