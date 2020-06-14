@@ -1,5 +1,6 @@
 # Config file for automatic testing at travis-ci.org
 
+
 language: python
 python:
   - 3.6
@@ -11,6 +12,10 @@ addons:
     packages:
     - nodejs
     - npm
+    
+branches:
+  only:
+  - trunk
 
 # cache the node stuff for dredd, otherwise everything takes forever:
 cache:
