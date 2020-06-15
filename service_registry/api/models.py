@@ -2,7 +2,9 @@
 API Data Model definitions
 """
 
+import dataclasses
 from dataclasses import dataclass
+
 
 @dataclass
 class Error():
@@ -17,11 +19,23 @@ class ServiceType():
     artifact: str
     version: str
 
+    def __init__(self, **kwargs):
+        names = set([f.name for f in dataclasses.fields(self)])
+        for k, v in kwargs.items():
+            if k in names:
+                setattr(self, k, v)
+
 
 @dataclass
 class Organization():
     name: str
     url: str
+
+    def __init__(self, **kwargs):
+        names = set([f.name for f in dataclasses.fields(self)])
+        for k, v in kwargs.items():
+            if k in names:
+                setattr(self, k, v)
 
 
 @dataclass
@@ -38,6 +52,13 @@ class Service():
     updatedAt: str = ''
     environment: str = ''
 
+    def __init__(self, **kwargs):
+        names = set([f.name for f in dataclasses.fields(self)])
+        for k, v in kwargs.items():
+            if k in names:
+                setattr(self, k, v)
+
+
 @dataclass
 class ExternalService():
     id: str
@@ -52,3 +73,10 @@ class ExternalService():
     createdAt: str = ''
     updatedAt: str = ''
     environment: str = ''
+
+    def __init__(self, **kwargs):
+        names = set([f.name for f in dataclasses.fields(self)])
+        for k, v in kwargs.items():
+            if k in names:
+                setattr(self, k, v)
+

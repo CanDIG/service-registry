@@ -51,7 +51,7 @@ def main(args=None):
     # add the swagger APIs
     api_def = pkg_resources.resource_filename('service_registry',
                                               'api/swagger.yaml')
-    app.add_api(api_def, strict_validation=True, validate_responses=True)
+    app.add_api(api_def)
 
     app.run(host=args.host, port=args.port)
 
