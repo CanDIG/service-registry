@@ -52,7 +52,7 @@ def list_services():
     try:
         urls = URL().query.all()
     except orm.ORMException as e:
-        return Error(status=500, title='Error connecting to database'), 500
+        return Error(status=500, title='Error connecting to database', detail=str(e)), 500
 
     external_services = []
     for url in urls:
@@ -71,23 +71,23 @@ def list_services():
 
 
 @apilog
-def get_one_service(service_id):
+def get_one_service(serviceId):
     """
     Return info for one service
     """
     db_session = orm.get_session()
     try:
-        q = db_session.query(models.URL).get(service_id)
+        q = db_session.query(models.URL).get(serviceId)
     except orm.ORMException as e:
-        return Error(status=500, title='Error connecting to database'), 500
+        return Error(status=500, title='Error connecting to database', detail=str(e)), 500
 
     if not q:
-        return Error(message="No such service found: "+str(service_id), code=404), 404
+        return Error(title="No such service found", detail="No result for service "+str(serviceId), status=404), 404
 
     service = get_service_info(q.url)
 
     if not service:
-        return Error(message="Service not available: "+str(service_id), code=404), 404
+        return Error(title="Service not available", detail="Could not connect to service "+str(serviceId), status=404), 404
 
     # overwrite ID and name with local values
     service.id = q.id
@@ -115,13 +115,15 @@ def list_service_types():
     try:
         urls = URL().query.all()
     except orm.ORMException as e:
-        return Error(status=500, title='Error connecting to database'), 500
+        return Error(status=500, title='Error connecting to database', detail=str(e)), 500
 
-    service_types = set()
+    service_types = []
     for url in urls:
         service = get_service_info(url.url)
         if not service:
             continue
-        service_types.add(service.type)
+        service_type = ServiceType(**service.type)
+        if not service_type in service_types:
+            service_types.append(service_type)
 
-    return [orm.dump(asdict(svc_type)) for svc_type in service_types], 200, {'Access-Control-Allow-Origin':'*'}
+    return [orm.dump(svc_type) for svc_type in service_types], 200, {'Access-Control-Allow-Origin':'*'}

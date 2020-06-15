@@ -15,7 +15,7 @@ paths:
       summary: 'List services in the registry'
       operationId: service_registry.api.operations.list_services
       responses:
-        '200':
+        200:
           description: 'List of services'
           content:
             application/json:
@@ -23,14 +23,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ExternalService'
-        '401':
+        401:
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        403:
           $ref: '#/components/responses/Forbidden'
-        '500':
+        500:
           $ref: '#/components/responses/InternalServerError'
-        default:
-          $ref: '#/components/responses/Error'
   /services/{serviceId}:
     get:
       summary: 'Find service in the registry by ID'
@@ -42,31 +40,29 @@ paths:
           required: true
           schema:
             type: string
-          example: '1b037a70-06b2-40e0-9e94-18865ce86d73'
+          example: '3c4b179d-1857-489b-b1eb-0a2fa2c5c21f'
       responses:
-        '200':
+        200:
           description: 'Information about a service with the given ID'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExternalService'
-        '401':
+        401:
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        403:
           $ref: '#/components/responses/Forbidden'
-        '404':
+        404:
           $ref: '#/components/responses/NotFound'
-        '500':
+        500:
           $ref: '#/components/responses/InternalServerError'
-        default:
-          $ref: '#/components/responses/Error'
   /services/types:
     get:
       summary: 'List types of services exposed by the registry'
       description: 'List all distinct values of the `type` field of exposed services (see `Service`).'
       operationId: service_registry.api.operations.list_service_types
       responses:
-        '200':
+        200:
           description: 'List of service types'
           content:
             application/json:
@@ -74,20 +70,18 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ServiceType'
-        '401':
+        401:
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        403:
           $ref: '#/components/responses/Forbidden'
-        '500':
+        500:
           $ref: '#/components/responses/InternalServerError'
-        default:
-          $ref: '#/components/responses/Error'
   /service-info:
     get:
       summary: 'Show information about the registry'
       operationId: service_registry.api.operations.get_this_service
       responses:
-        '200':
+        200:
           description: |
             Display service information about this service registry.
             Use `"type": {"group": "org.ga4gh", "artifact": "service-registry", "version": "1.0.0"}` when implementing this specification directly.
@@ -95,14 +89,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Service'
-        '401':
+        401:
           $ref: '#/components/responses/Unauthorized'
-        '403':
+        403:
           $ref: '#/components/responses/Forbidden'
-        '500':
+        500:
           $ref: '#/components/responses/InternalServerError'
-        default:
-          $ref: '#/components/responses/Error'
 components:
   responses:
     Unauthorized:

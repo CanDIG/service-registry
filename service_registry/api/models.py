@@ -5,27 +5,27 @@ API Data Model definitions
 from dataclasses import dataclass
 
 @dataclass
-class Error:
+class Error():
     status: int
     title: str
     detail: str
 
 
 @dataclass
-class ServiceType:
+class ServiceType():
     group: str
     artifact: str
     version: str
 
 
 @dataclass
-class Organization:
+class Organization():
     name: str
     url: str
 
 
 @dataclass
-class Service:
+class Service():
     id: str
     name: str
     type: ServiceType
