@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ljdursi/service-registry.svg?branch=master)](https://travis-ci.org/ljdursi/service-registry)
 [![CodeFactor](https://www.codefactor.io/repository/github/ljdursi/service-registry/badge)](https://www.codefactor.io/repository/github/ljdursi/service-registry)
 [![PyUp](https://pyup.io/repos/github/ljdursi/service-registry/shield.svg)](https://pyup.io/repos/github/ljdursi/service-registry/)
-[![Quay.io](https://quay.io/repository/ljdursi/service-registry/status)](https://quay.io/repository/candig/service-registry)
+[![Quay.io](https://quay.io/repository/ljdursi/service-registry/status)](https://quay.io/repository/ljdursi/service-registry)
 
 ## Stack
 
