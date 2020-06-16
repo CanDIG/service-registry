@@ -4,10 +4,8 @@
 Implement endpoints of model service
 """
 import sys
-from dataclasses import asdict
 from urllib.parse import urljoin
 import requests
-from tornado.options import options
 from service_registry import orm
 from service_registry.orm import models
 from service_registry.api.logging import apilog
