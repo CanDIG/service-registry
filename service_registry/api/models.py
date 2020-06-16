@@ -3,7 +3,7 @@ API Data Model definitions
 """
 
 import dataclasses
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -45,6 +45,7 @@ class Service():
     type: ServiceType
     organization: Organization
     version: str
+    cohorts: list = field(default_factory=list)
     contactUrl: str = ''
     documentationUrl: str = ''
     description: str = ''
@@ -67,6 +68,7 @@ class ExternalService():
     organization: Organization
     version: str
     url: str
+    cohorts: list = field(default_factory=list)
     contactUrl: str = ''
     documentationUrl: str = ''
     description: str = ''
