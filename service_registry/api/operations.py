@@ -38,7 +38,16 @@ def get_service_info(url):
         print(f"[{SERVICE_NAME}] Encountered timeout with {service_info_url}", file=sys.stderr, flush=True)
         return None
 
-    return Service(**r.json())
+    service_data = r.json()
+    if "cohorts" not in service_data:
+        cohort_url = urljoin(f"{url}/", "cohorts")
+        cr = requests.get(cohort_url, timeout=1)
+        if cr.status_code != 200:
+            print(f"[{SERVICE_NAME}] No cohort data available at f{url}", file=sys.stderr, flush=True)
+        else:
+            service_data.update["cohorts"] = cr.json()
+
+    return Service(**service_data)
 
 
 @apilog
