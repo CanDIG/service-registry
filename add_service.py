@@ -46,10 +46,10 @@ def validate_url(url):
         valid = True
     except requests.exceptions.Timeout as e:
         print("Timeout occurred", file=sys.stderr, flush=True)
-        print(e)
+        print(e, file=sys.stderr, flush=True)
     except requests.ConnectionError as e:
         print("Unable to connect", file=sys.stderr, flush=True)
-        print(e)
+        print(e, file=sys.stderr, flush=True)
     except (requests.RequestException, Exception) as e:
         print(e, file=sys.stderr, flush=True)
 
