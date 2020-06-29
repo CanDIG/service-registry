@@ -38,25 +38,16 @@ def validate_url(url):
     """
     valid = False
     try:
-        print(repr(url))
-        #url = "https://googwle.com:81"
-        print(url)
-        print(type(url))
-        print(len(url))
         requests.get(url, timeout=5)
         valid = True
-    except requests.URLRequired:
-        print("Invalid URL", file=sys.stderr, flush=True)
-    except requests.TooManyRedirects:
-        print("Too many redirects", file=sys.stderr, flush=True)
-    except requests.exceptions.ConnectTimeout:
+    except requests.exceptions.Timeout as e:
         print("Timeout occurred", file=sys.stderr, flush=True)
+        print(e)
     except requests.ConnectionError as e:
         print("Unable to connect", file=sys.stderr, flush=True)
         print(e)
-    except requests.RequestException as e:
-        print("Unknown error", file=sys.stderr, flush=True)
-        print(e)
+    except (requests.RequestException, Exception) as e:
+        print(e, file=sys.stderr, flush=True)
 
     return valid
 
