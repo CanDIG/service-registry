@@ -25,6 +25,10 @@ def main(args=None):
     init_db(uri="sqlite:///"+args.database)
     db_session = get_session()
 
+    if URL().query.filter_by(url=args.url):
+        print(f"{args.url} already exists in database", file=sys.stderr, flush=True)
+        return
+
     new_url = URL(url=args.url, name=args.name, id=uuid.uuid4())
     db_session.add(new_url)
     db_session.commit()
