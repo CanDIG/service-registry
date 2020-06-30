@@ -1,3 +1,6 @@
+"""
+Unit tests for add_service.py.
+"""
 import unittest
 import argparse
 import add_service

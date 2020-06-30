@@ -36,7 +36,8 @@ def main(args=None):
 
 def validate_url(url):
     """
-    Return True iff <url> is a valid URL address.
+    Return True iff <url> is a valid URL address that can be connected to.
+
     :param url: URL address to be validated
     :return: bool
     """
