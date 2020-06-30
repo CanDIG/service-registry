@@ -25,7 +25,7 @@ def main(args=None):
     init_db(uri="sqlite:///"+args.database)
     db_session = get_session()
 
-    if URL().query.filter_by(url=args.url):
+    if URL().query.filter_by(url=args.url).scalar():
         print(f"{args.url} already exists in database", file=sys.stderr, flush=True)
         return
 
