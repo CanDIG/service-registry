@@ -5,6 +5,7 @@ import datetime
 import uuid
 from sqlalchemy import Column, String, DateTime, Boolean
 from sqlalchemy import UniqueConstraint, ForeignKey
+from sqlalchemy.orm import relationship
 from service_registry.orm.guid import GUID
 from service_registry.orm import Base
 
@@ -18,10 +19,11 @@ class URL(Base):
     name = Column(String(100))
     url = Column(String(100))
     added = Column(DateTime, default=datetime.datetime.utcnow)
-    service = Column(GUID(), ForeignKey('services.id'), default=None)
+    service_id = Column(GUID(), ForeignKey('services.id'), default=None)
     __table_args__ = (
         UniqueConstraint('url'),
     )
+    service = relationship("Service")
 
 
 class Type(Base):
@@ -33,6 +35,7 @@ class Type(Base):
     group = Column(String(100))
     artifact = Column(String(100))
     version = Column(String(100))
+    service = relationship('Service', uselist=False)
 
 
 class Organization(Base):
@@ -43,6 +46,7 @@ class Organization(Base):
     id = Column(GUID(), primary_key=True, default=uuid.uuid4)
     name = Column(String(100))
     url = Column(String(100))
+    service = relationship('Service', uselist=False)
 
 
 class Service(Base):
@@ -52,13 +56,16 @@ class Service(Base):
     __tablename__ = 'services'
     id = Column(GUID(), primary_key=True, default=uuid.uuid4)
     name = Column(String(100))
-    type = Column(GUID(), ForeignKey('types.id'), default=None)
+    type_id = Column(GUID(), ForeignKey('types.id'), default=None)
     description = Column(String(100))
-    organization = Column(GUID(), ForeignKey('organizations.id'), default=None)
+    organization_id = Column(GUID(), ForeignKey('organizations.id'), default=None)
     contact_url = Column(String(100))
     documentation_url = Column(String(100))
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(String(100))
+    updated_at = Column(String(100))
     environment = Column(String(100))
     version = Column(String(100))
     active = Column(Boolean())
+    type = relationship('Type')
+    organization = relationship('Organization')
+    url = relationship('URL', uselist=False)
