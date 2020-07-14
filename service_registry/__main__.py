@@ -4,6 +4,7 @@ Driver program for service
 """
 import sys
 import argparse
+from distutils import util
 import logging
 import pkg_resources
 import connexion
@@ -23,6 +24,7 @@ def main(args=None):
     parser.add_argument('--logfile', default="./log/services.log")
     parser.add_argument('--loglevel', default='INFO',
                         choices=['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL'])
+    parser.add_argument('--activestatus', default='True', choices=['True', 'False'])
     args = parser.parse_args(args)
 
     # set up the application
@@ -30,6 +32,7 @@ def main(args=None):
     define("dbfile", default=args.database)
     define("host", args.host)
     define("port", args.port)
+    define("show_active_status", bool(util.strtobool(args.activestatus)))
     service_registry.orm.init_db()
     db_session = service_registry.orm.get_session()
 
