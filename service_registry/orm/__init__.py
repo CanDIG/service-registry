@@ -84,4 +84,4 @@ def dump(obj, nonulls=True):
                 if not k.startswith('_')}
 
     return {k: v for k, v in vars(obj).items()
-            if not k.startswith('_') and v}
+            if not k.startswith('_') and v is not None}
