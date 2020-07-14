@@ -65,7 +65,6 @@ class Service(Base):
     updated_at = Column(String(100))
     environment = Column(String(100))
     version = Column(String(100))
-    active = Column(Boolean())
     type = relationship('Type')
     organization = relationship('Organization')
     url = relationship('URL', uselist=False)
