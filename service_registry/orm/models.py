@@ -3,7 +3,7 @@ SQLAlchemy models for the database
 """
 import datetime
 import uuid
-from sqlalchemy import Column, String, DateTime, Boolean
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy import UniqueConstraint, ForeignKey
 from sqlalchemy.orm import relationship
 from service_registry.orm.guid import GUID
