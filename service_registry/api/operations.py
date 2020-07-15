@@ -145,7 +145,7 @@ def list_services():
         service_as_dict = orm.dump(service)
         service_as_dict['url'] = url.url
 
-        if options.show_active_status:
+        if not options.remove_active_status:
             service_as_dict['active'] = active
 
         external_services.append(ExternalService(**service_as_dict))
@@ -178,7 +178,7 @@ def get_one_service(serviceId):
     service_as_dict = orm.dump(service)
     service_as_dict['url'] = q.url
 
-    if options.show_active_status:
+    if not options.remove_active_status:
         service_as_dict['active'] = active
 
     external_service = ExternalService(**service_as_dict)

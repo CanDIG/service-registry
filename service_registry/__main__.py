@@ -24,7 +24,7 @@ def main(args=None):
     parser.add_argument('--logfile', default="./log/services.log")
     parser.add_argument('--loglevel', default='INFO',
                         choices=['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL'])
-    parser.add_argument('--activestatus', default='True', choices=['True', 'False'])
+    parser.add_argument('--remove-active', action='store_true', default=False)
     args = parser.parse_args(args)
 
     # set up the application
@@ -32,7 +32,7 @@ def main(args=None):
     define("dbfile", default=args.database)
     define("host", args.host)
     define("port", args.port)
-    define("show_active_status", bool(util.strtobool(args.activestatus)))
+    define("remove_active_status", args.remove_active)
     service_registry.orm.init_db()
     db_session = service_registry.orm.get_session()
 
