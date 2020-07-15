@@ -68,6 +68,7 @@ class ExternalService():
     organization: Organization
     version: str
     url: str
+    active: bool
     cohorts: list = field(default_factory=list)
     contactUrl: str = ''
     documentationUrl: str = ''
