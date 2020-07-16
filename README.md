@@ -104,7 +104,30 @@ python3 -m add_service "ELIXIR Beacon FI" "https://staging-elixirbeacon.rahtiapp
 Now, sending a request to `/services` will return a response similar to:
 
 ```
-
+[
+  {
+    "active": true,
+    "contactUrl": "https://www.csc.fi/contact-info",
+    "createdAt": "2018-07-25T00:00:00Z",
+    "description": "Beacon API Web Server based on the GA4GH Beacon API",
+    "documentationUrl": "https://beacon-python.readthedocs.io/en/latest/",
+    "environment": "dev",
+    "id": "431c9524-4e0e-4dbc-86b2-328d69c14931",
+    "name": "ELIXIR Beacon FI",
+    "organization": {
+      "name": "CSC - IT Center for Science",
+      "url": "https://www.csc.fi/"
+    },
+    "type": {
+      "artifact": "beacon",
+      "group": "org.ga4gh",
+      "version": "1.1.0"
+    },
+    "updatedAt": "2020-06-30T11:44:09Z",
+    "url": "https://staging-elixirbeacon.rahtiapp.fi",
+    "version": "1.7.0"
+  }
+]
 ```
 
 For testing, the Dredd config is currently set up to launch the service itself, so no server needs to be running:
