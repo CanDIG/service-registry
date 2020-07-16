@@ -56,7 +56,12 @@ the `active` field is shown in responses.
 After starting up the server, sending a request to `host:port` (`localhost:3000` by default) should give you the following response:
 
 ```
-
+{
+  "detail": "The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.",
+  "status": 404,
+  "title": "Not Found",
+  "type": "about:blank"
+}
 ```
 
 There are a few endpoints:
