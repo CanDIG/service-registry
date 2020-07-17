@@ -9,9 +9,9 @@
 
 - [Connexion](https://github.com/zalando/connexion) for implementing the API
 - [SQLAlchemy](http://sqlalchemy.org), using [Sqlite3](https://www.sqlite.org/index.html) for ORM
-- [Dredd](https://dredd.readthedocs.io/en/latest/) and [Dredd-Hooks-Python](https://github.com/apiaryio/dredd-hooks-python) for testing
+- [Dredd](https://dredd.readthedocs.io/en/latest/) and [Dredd-Hooks-Python](https://github.com/apiaryio/dredd-hooks-python) for API testing
 - Python 3.7+
-- Pytest, tox
+- [Pytest](https://docs.pytest.org/en/latest/), [tox](https://tox.readthedocs.io/en/latest/)
 - [Travis CI](https://travis-ci.org/)
 
 ## Installation
@@ -48,7 +48,7 @@ There are several command line arguments you can pass in when running the server
 
 `--logfile` Path to the log file. Default path is `./log/services.log`.
 
-`--loglevel` Verbosity of the logging. Must be one of `{'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL'}`. Default is `INFO`.
+`--loglevel` Verbosity of the logging. Must be one of `{'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL'}`. Default level is `INFO`.
 
 `--remove-active` When this argument is given, the `active` field is not shown in responses. By default,
 the `active` field is shown in responses.
