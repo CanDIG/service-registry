@@ -4,6 +4,7 @@ the tests are made in the correct order, and that IDs
 returned previously are used in proceeding API calls
 """
 import sys
+import json
 import dredd_hooks as hooks
 
 ORDER = ["/services > List services in the registry > 200 > application/json",
@@ -35,15 +36,26 @@ def reorder_actions(transactions):
     for transaction in transactions:
         print(transaction, file=sys.stderr, flush=True)
 
+
 UUID_EXAMPLE = "3c4b179d-1857-489b-b1eb-0a2fa2c5c21f"
-GOOD_UUID_EXAMPLE = "1b037a70-06b2-40e0-9e94-18865ce86d73"
 BAD_UUID_EXAMPLE = "bf3ba75b-8dfe-4619-b832-31c4a087a589"
 
+response_stash = {}
+
+
+@hooks.after("/services > List services in the registry > 200 > application/json")
+def save_service_response(transaction):
+    """
+    Save a service id returned from the get all call
+    """
+    parsed_body = json.loads(transaction['real']['body'])
+    ids = [item['id'] for item in parsed_body]
+    response_stash['good_id'] = ids[0]
 
 @hooks.before("/services/{serviceId} > Find service in the registry by ID > 200 > application/json")
 def insert_good_id(transaction):
     "Put the saved individual ID into the URL"
-    transaction['fullPath'] = transaction['fullPath'].replace(UUID_EXAMPLE, GOOD_UUID_EXAMPLE)
+    transaction['fullPath'] = transaction['fullPath'].replace(UUID_EXAMPLE, response_stash['good_id'])
 
 @hooks.before("/services/{serviceId} > Find service in the registry by ID > 404 > application/json")
 def insert_bad_id(transaction):
