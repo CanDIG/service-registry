@@ -1,9 +1,9 @@
 # Service Registry
 
-[![Build Status](https://travis-ci.com/ljdursi/service-registry.svg?branch=trunk)](https://travis-ci.com/ljdursi/service-registry)
-[![CodeFactor](https://www.codefactor.io/repository/github/ljdursi/service-registry/badge)](https://www.codefactor.io/repository/github/ljdursi/service-registry)
-[![PyUp](https://pyup.io/repos/github/ljdursi/service-registry/shield.svg)](https://pyup.io/repos/github/ljdursi/service-registry/)
-[![Quay.io](https://quay.io/repository/ljdursi/service-registry/status)](https://quay.io/repository/ljdursi/service-registry)
+[![Build Status](https://travis-ci.com/CanDIG/service-registry.svg?branch=trunk)](https://travis-ci.com/CanDIG/service-registry)
+[![CodeFactor](https://www.codefactor.io/repository/github/candig/service-registry/badge)](https://www.codefactor.io/repository/github/candig/service-registry)
+[![PyUp](https://pyup.io/repos/github/CanDIG/service-registry/shield.svg)](https://pyup.io/repos/github/ljdursi/service-registry/)
+[![Quay.io](https://quay.io/repository/CanDIG/service-registry/status)](https://quay.io/repository/CanDIG/service-registry)
 
 ## Stack
 
