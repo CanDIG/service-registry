@@ -3,6 +3,6 @@ watchdog==2.1.6
 flake8==3.9.0
 tox==3.23.1
 coverage==5.5
-pytest==6.2.4
+pytest==7.1.2
 pytest-runner==5.3.1
 dredd_hooks==0.2.0
